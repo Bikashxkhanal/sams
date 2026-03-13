@@ -72,7 +72,7 @@ class TeacherController {
         }
 
         // Reload after saving to prevent resubmission
-        header("Location: teacher/attendance&subject_id={$subjectId}");
+        header("Location: /teacher/attendance?subject_id={$subjectId}");
         exit;
     }
 

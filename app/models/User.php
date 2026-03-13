@@ -21,13 +21,14 @@ public function getAllStudents() {
 
   public function create($data){
         $this->db->prepare("
-            INSERT INTO users(name,email,password,role)
-            VALUES(?,?,?,?)
+            INSERT INTO users(name,email,password,role, semester_id)
+            VALUES(?,?,?,?, ?)
         ")->execute([
             $data['name'],
             $data['email'],
-            password_hash($data['password'], PASSWORD_DEFAULT),
-            $data['role']
+            md5($data['password']),
+            $data['role'], 
+            $data['semester_id']
         ]);
     }
 

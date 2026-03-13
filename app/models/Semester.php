@@ -14,7 +14,7 @@ class Semester extends Model {
     }
     public function create($programId,$name){
         $this->db->prepare(
-            "INSERT INTO semesters(program_id,name) VALUES(?,?)"
+            "INSERT INTO semesters(program_id,semester_no) VALUES(?,?)"
         )->execute([$programId,$name]);
     }
 }

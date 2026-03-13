@@ -58,20 +58,21 @@
     }
 
     /* SUBJECT */
-    public function createSubject()
-    {
-        Auth::role('ADMIN') || die("Unauthorized");
+ public function createSubject()
+{
+    Auth::role('ADMIN') || die("Unauthorized");
 
-        $semesters = (new Semester())->all();
+    $semesters = (new Semester())->all();
+    $programs  = (new Program())->all();
 
-        if($_POST){
-            (new Subject())->create($_POST['semester_id'], $_POST['name']);
-            header("Location: /admin");
-            exit;
-        }
-
-        $this->view('admin/subject_create', compact('semesters'));
+    if ($_POST) {
+        (new Subject())->create($_POST['semester_id'], $_POST['name']);
+        header("Location: /admin");
+        exit;
     }
+
+    $this->view('admin/subject_create', compact('programs', 'semesters'));
+}
 
     /* USER (Teacher / Student) */
     public function createUser()
